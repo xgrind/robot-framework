@@ -2,12 +2,12 @@
 Documentation    Suite de Teste do cadastro de personagens na API da Marvel
 
 Library     RequestsLibrary
-Library     ${EXECDIR}/factories/Thanos.py
+Library     ${EXECDIR}/resources/factories/Thanos.py
 
 *Test Cases*
 Deve cadastrar um personagem  
 
-    Account And Set Headers     xgrind@gmail.com
+    Set Client Key      xgrind@gmail.com
 
     &{personagem}       Factory Thanos
    
@@ -17,7 +17,7 @@ Deve cadastrar um personagem
     ...                 headers=${headers}
 
 *Keywords*
-Account And Set Headers
+Set Client Key
     [Arguments]         ${email}
 
     &{usuario}          Create Dictionary       email=${email}
