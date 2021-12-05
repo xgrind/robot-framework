@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211204 20:48:07.844" rpa="false" schemaversion="2">
+<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211204 20:57:27.976" rpa="false" schemaversion="2">
 <suite id="s1" name="CreateCharacters" source="/home/michael/projetos/marvel-api/CreateCharacters.robot">
 <test id="s1-t1" name="Deve cadastrar um personagem">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>&amp;{usuario}</var>
 <arg>email=xgrind@gmail.com</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20211204 20:48:08.619" level="INFO">&amp;{usuario} = { email=xgrind@gmail.com }</msg>
-<status status="PASS" starttime="20211204 20:48:08.614" endtime="20211204 20:48:08.620"/>
+<msg timestamp="20211204 20:57:30.935" level="INFO">&amp;{usuario} = { email=xgrind@gmail.com }</msg>
+<status status="PASS" starttime="20211204 20:57:30.920" endtime="20211204 20:57:30.935"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>http://marvel.qaninja.academy/accounts</arg>
 <arg>json=${usuario}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20211204 20:48:08.955" level="INFO">POST Request : url=http://marvel.qaninja.academy/accounts 
+<msg timestamp="20211204 20:57:31.308" level="INFO">POST Request : url=http://marvel.qaninja.academy/accounts 
  path_url=/accounts 
  headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '29', 'Content-Type': 'application/json'} 
  body=b'{"email": "xgrind@gmail.com"}' 
  </msg>
-<msg timestamp="20211204 20:48:08.956" level="INFO">POST Response : url=http://marvel.qaninja.academy/accounts 
+<msg timestamp="20211204 20:57:31.309" level="INFO">POST Response : url=http://marvel.qaninja.academy/accounts 
  status=200, reason=OK 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'Etag': 'W/"29-Md/h/wHqR8dZ/xVnC6SV+OMZZMk"', 'Date': 'Sat, 04 Dec 2021 23:48:08 GMT', 'Via': '1.1 vegur'} 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'Etag': 'W/"29-Md/h/wHqR8dZ/xVnC6SV+OMZZMk"', 'Date': 'Sat, 04 Dec 2021 23:57:31 GMT', 'Via': '1.1 vegur'} 
  body={"client_key":"61abd47b642aec00168320b0"} 
  </msg>
-<msg timestamp="20211204 20:48:08.957" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20211204 20:48:08.621" endtime="20211204 20:48:08.957"/>
+<msg timestamp="20211204 20:57:31.311" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211204 20:57:30.938" endtime="20211204 20:57:31.311"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${client_key}</var>
 <arg>${response.json()}[client_key]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20211204 20:48:08.985" level="INFO">${client_key} = 61abd47b642aec00168320b0</msg>
-<status status="PASS" starttime="20211204 20:48:08.963" endtime="20211204 20:48:08.999"/>
+<msg timestamp="20211204 20:57:31.339" level="INFO">${client_key} = 61abd47b642aec00168320b0</msg>
+<status status="PASS" starttime="20211204 20:57:31.324" endtime="20211204 20:57:31.339"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>&amp;{headers}</var>
 <arg>client_key=${client_key}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20211204 20:48:09.015" level="INFO">&amp;{headers} = { client_key=61abd47b642aec00168320b0 }</msg>
-<status status="PASS" starttime="20211204 20:48:09.008" endtime="20211204 20:48:09.017"/>
+<msg timestamp="20211204 20:57:31.377" level="INFO">&amp;{headers} = { client_key=61abd47b642aec00168320b0 }</msg>
+<status status="PASS" starttime="20211204 20:57:31.367" endtime="20211204 20:57:31.378"/>
 </kw>
 <kw name="Factory Thanos" library="Thanos">
 <var>&amp;{personagem}</var>
-<msg timestamp="20211204 20:48:09.029" level="INFO">&amp;{personagem} = { name=Thanos de Titã | aliases=Thanos | age=3000 | team=Ordem Negra | active=False }</msg>
-<status status="PASS" starttime="20211204 20:48:09.024" endtime="20211204 20:48:09.030"/>
+<msg timestamp="20211204 20:57:31.424" level="INFO">&amp;{personagem} = { name=Amy Johnson | aliases=Thanos | age=3000 | team=Ordem Negra | active=False }</msg>
+<status status="PASS" starttime="20211204 20:57:31.401" endtime="20211204 20:57:31.424"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <arg>http://marvel.qaninja.academy/characters</arg>
 <arg>json=${personagem}</arg>
 <arg>headers=${headers}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20211204 20:48:09.438" level="INFO">POST Request : url=http://marvel.qaninja.academy/characters 
+<msg timestamp="20211204 20:57:31.765" level="INFO">POST Request : url=http://marvel.qaninja.academy/characters 
  path_url=/characters 
- headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '61abd47b642aec00168320b0', 'Content-Length': '105', 'Content-Type': 'application/json'} 
- body=b'{"name": "Thanos de Tit\\u00e3", "aliases": "Thanos", "age": 3000, "team": "Ordem Negra", "active": false}' 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '61abd47b642aec00168320b0', 'Content-Length': '97', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Amy Johnson", "aliases": "Thanos", "age": 3000, "team": "Ordem Negra", "active": false}' 
  </msg>
-<msg timestamp="20211204 20:48:09.452" level="INFO">POST Response : url=http://marvel.qaninja.academy/characters 
+<msg timestamp="20211204 20:57:31.766" level="INFO">POST Response : url=http://marvel.qaninja.academy/characters 
  status=200, reason=OK 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '160', 'Etag': 'W/"a0-HX/qDnhnVCbCs2gClX+Iritzsr4"', 'Date': 'Sat, 04 Dec 2021 23:48:09 GMT', 'Via': '1.1 vegur'} 
- body={"_id":"61abfe395682980016f36952","name":"Thanos de Titã","age":3000,"aliases":"Thanos","team":"Ordem Negra","active":false,"owner":"61abd47b642aec00168320b0"} 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '156', 'Etag': 'W/"9c-SvHd0Jqsl4HciMHbaI1rDhaErVI"', 'Date': 'Sat, 04 Dec 2021 23:57:31 GMT', 'Via': '1.1 vegur'} 
+ body={"_id":"61ac006b5682980016f3695f","name":"Amy Johnson","age":3000,"aliases":"Thanos","team":"Ordem Negra","active":false,"owner":"61abd47b642aec00168320b0"} 
  </msg>
-<status status="PASS" starttime="20211204 20:48:09.032" endtime="20211204 20:48:09.453"/>
+<status status="PASS" starttime="20211204 20:57:31.431" endtime="20211204 20:57:31.775"/>
 </kw>
-<status status="PASS" starttime="20211204 20:48:08.610" endtime="20211204 20:48:09.464"/>
+<status status="PASS" starttime="20211204 20:57:30.903" endtime="20211204 20:57:31.794"/>
 </test>
 <doc>Suite de Teste do cadastro de personagens na API da Marvel</doc>
-<status status="PASS" starttime="20211204 20:48:07.854" endtime="20211204 20:48:09.476"/>
+<status status="PASS" starttime="20211204 20:57:27.987" endtime="20211204 20:57:31.866"/>
 </suite>
 <statistics>
 <total>
